@@ -14,17 +14,20 @@ public class EnvController {
     private final String memoryLimit;
     private final String cfInstanceIndex;
     private final String cfInstanceAddress;
+    private final String vcapServices;
 
     public EnvController(
             @Value("${port:NOT SET}") String port,
             @Value("${memory.limit:NOT SET}") String memoryLimit,
             @Value("${cf.instance.index:NOT SET}") String cfInstanceIndex,
-            @Value("${cf.instance.addr:NOT SET}") String cfInstanceAddress
+            @Value("${cf.instance.addr:NOT SET}") String cfInstanceAddress,
+            @Value("${vcap.services:NOT SET}") String vcapServices
     ) {
         this.port = port;
         this.memoryLimit = memoryLimit;
         this.cfInstanceIndex = cfInstanceIndex;
         this.cfInstanceAddress = cfInstanceAddress;
+        this.vcapServices = vcapServices;
     }
 
     @GetMapping("/env")
@@ -35,6 +38,7 @@ public class EnvController {
         env.put("MEMORY_LIMIT", memoryLimit);
         env.put("CF_INSTANCE_INDEX", cfInstanceIndex);
         env.put("CF_INSTANCE_ADDR", cfInstanceAddress);
+        env.put("VCAP_SERVICES", vcapServices);
 
         return env;
     }

@@ -14,7 +14,8 @@ public class EnvControllerTest {
             "8675",
             "12G",
             "34",
-            "123.sesame.street"
+            "123.sesame.street",
+                "vcap.services"
         );
 
         Map<String, String> env = controller.getEnv();
